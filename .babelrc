@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "@babel/react",
+    "@babel/typescript",
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": "last 2 versions"
+        },  
+        "loose": false
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-proposal-class-properties", "transform-class-properties"],
+  "env": {
+        "test": {
+            "plugins": [
+                "transform-es2015-modules-commonjs"
+            ]
+        }
+    }
+}
