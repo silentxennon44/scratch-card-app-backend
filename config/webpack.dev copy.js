@@ -24,6 +24,8 @@ module.exports = {
     // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
 
+    new webpack.HotModuleReplacementPlugin(),
+    // Copies files from target to destination folder
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -50,6 +52,10 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
+    
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
   ],
 
   // Determine how modules within the project are treated
@@ -65,6 +71,20 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
+      },
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
+        ]
       },
       {
         test: /\.txt$/,
@@ -84,6 +104,7 @@ module.exports = {
       },
     ],
   },
+  mode: 'development',
   resolve: {
     modules: [paths.src, 'node_modules'],
     extensions: ['.js', '.jsx', '.json', '.tsx', '.ts', '.js'],
@@ -91,6 +112,13 @@ module.exports = {
       '@': paths.src,
       // assets: paths.public,
     },
+  },
+  devServer: {
+    historyApiFallback: true,
+    static: paths.build,
+    // open: true,
+    compress: true,
+    port: 8080,
   },
   optimization: {
     minimize: true,
