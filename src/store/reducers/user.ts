@@ -1,13 +1,13 @@
 import * as userAction from '../actions/user'
 
-interface User {
+export interface User {
   id: number
   name: string
   username: string
   password: string
   user_level: string
-  status: "active" | "inactive" | ''
-  is_new: boolean | ''
+  status: Nullable<"active" | "inactive">
+  is_new: Nullable<Boolean>
   google_secret: string
 }
 
@@ -17,8 +17,8 @@ const initialUser : User = {
   username: '',
   password: '',
   user_level: '',
-  status: '',
-  is_new: '',
+  status: null,
+  is_new: null,
   google_secret: '',
 }
 

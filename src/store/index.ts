@@ -1,10 +1,11 @@
-'use client';
 import { userReducer } from "./reducers/user";
+import { pagesReducer } from "./reducers/pages";
 import { combineReducers, } from 'redux';
 import { configureStore } from "@reduxjs/toolkit";
 
 const allReducers = combineReducers({
     User: userReducer,
+    Pages: pagesReducer,
 })
 
 const store = configureStore({

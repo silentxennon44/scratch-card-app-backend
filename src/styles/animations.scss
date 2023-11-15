@@ -1,0 +1,82 @@
+@use "sass:math";
+
+$elements: 7;
+
+@for $i from 0 to $elements {
+ * > .enter-x:nth-child(#{$i+0}) {
+    transform: translateX(50px);
+  }
+
+  * > .-enter-x:nth-child(#{$i+0}) {
+    transform: translateX(-50px);
+  }
+
+  * > .enter-y:nth-child(#{$i+0}) {
+    transform: translateY(50px);
+  }
+
+  * > .-enter-y:nth-child(#{$i+0}) {
+    transform: translateY(-50px);
+  }
+
+  * > .enter-x:nth-child(#{$i+0}),
+  * > .-enter-x:nth-child(#{$i+0}) {
+    animation: enter-x-animation 0.4s ease-in-out 0.3s;
+  }
+
+  * > .enter-y:nth-child(#{$i+0}),
+  * > .-enter-y:nth-child(#{$i+0}) {
+    animation: enter-y-animation 0.4s ease-in-out 0.3s;
+  }
+
+  * > .enter-x:nth-child(#{$i+0}),
+  * > .-enter-x:nth-child(#{$i+0}),
+  * > .enter-y:nth-child(#{$i+0}),
+  * > .-enter-y:nth-child(#{$i+0}) {
+    z-index: (10 - ($i+0));
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: (math.div(($i+0) * 1 , 10))s;
+  }
+}
+
+
+@keyframes enter-x-animation {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes enter-y-animation {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* fade-slide */
+.fade-slide-leave-active,
+.fade-slide-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}

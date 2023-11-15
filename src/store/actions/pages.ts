@@ -1,0 +1,1 @@
+export const SET_ENTRY_STATE = "SET_ENTRY_STATE"

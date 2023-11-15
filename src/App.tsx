@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 
 import Entry from '@/pages/entry';
+import { RouterProvider } from 'react-router-dom';
+import Routes from './router';
 
 function App() {
   return (
-    <div className="App">
-      YEHEY
-    asdasd
-    <Entry/>
+    <div>
+      <RouterProvider router={Routes}/>
     </div>
   );
 }
