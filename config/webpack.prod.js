@@ -31,6 +31,55 @@ module.exports = merge(common, {
           'sass-loader',
         ],
       },
+      // {
+      //   test: /\.(scss|css)$/,
+      //   exclude: /\.module\.scss$/, // Exclude SCSS module
+      //   use: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         sourceMap: true,
+      //         importLoaders: 1,
+      //         modules: false
+      //       },
+      //     },
+      //     {
+      //       loader: 'sass-loader',
+      //       options: {
+      //         sourceMap: true,
+      //         sassOptions: {
+      //           outputStyle: "compressed",
+      //         },
+      //       },
+      //     }
+      //   ]
+      // },
+      // {
+      //   test: /\.module\.(scss|css)$/,
+      //   use: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         sourceMap: true,
+      //         importLoaders: 1,
+      //         modules: {
+      //           localIdentName: "[hash:base64:20]",
+      //         }
+      //       },
+      //     },
+      //     {
+      //       loader: 'sass-loader',
+      //       options: {
+      //         sourceMap: true,
+      //         sassOptions: {
+      //           outputStyle: "compressed",
+      //         },
+      //       },
+      //     }
+      //   ]
+      // },
     ],
   },
   plugins: [
