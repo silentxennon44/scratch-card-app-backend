@@ -28,11 +28,22 @@ module.exports = merge(common, {
           'style-loader',
           {
             loader: 'css-loader',
-            options: { sourceMap: true, importLoaders: 1, modules: false },
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              modules: {
+                localIdentName: "[name]__[local]__[hash:base64:10]",
+              }
+            },
           },
           {
             loader: 'sass-loader',
-            options: { sourceMap: true }
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                outputStyle: "compressed",
+              },
+            },
           }
         ]
       },
